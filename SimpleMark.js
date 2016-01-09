@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name         Simple Mark
 // @version      0.1
-// @description  Doubleclick with the middle mouse button to mark spot. Click spot to remove it.
+// @description  Doubleclick on any page to mark spot. Click spot to remove it.
 // @author       Pekka S.
-// @match        *
+// @match        *://*/*
 // ==/UserScript==
 /* jshint -W097 */
 
@@ -15,10 +15,6 @@ var simpleMark = function () {
     var size = 50;
 
     document.addEventListener('dblclick', function (e) {
-
-        if (e.button != 1) {
-            return;
-        }
 
         removeMark();
 
@@ -47,6 +43,7 @@ var simpleMark = function () {
         element.style.textAlign = 'center';
         element.style.lineHeight = size + 'px';
         element.style.cursor = 'pointer';
+        element.style.zIndex = 99999999;
 
         element.innerHTML = 'X';
 
